@@ -1,0 +1,665 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://purl.org/net/Pharmaco"
+         xmlns="http://purl.org/net/Pharmaco#"
+         xmlns:term="http://purl.org/dc/terms/">
+
+<owl:Ontology rdf:about="http://purl.org/net/Pharmaco">
+  <term:created rdf:datatype="http://www.w3.org/2001/XMLSchema#string">17-03-2022</term:created>
+  <term:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Core Sentence Ontology</term:title>
+  <preferredNamespaceUri rdf:datatype="http://www.w3.org/2001/XMLSchema#string">okbi</preferredNamespaceUri>
+  <rdfs:comment xml:lang="en">Core Sentence Ontology, created by Selvia Ferdiana Kusuma, Daniel O.
+      Siahaan and Chastine Fatichah</rdfs:comment>
+  <rdfs:comment xml:lang="en">This Core Ontology is built based on the parse tree model in
+      Indonesian sentences.</rdfs:comment>
+  <rdfs:label xml:lang="en">Core Sentence Ontology</rdfs:label>
+  <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</owl:versionInfo>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#hasCC">
+  <rdfs:range rdf:resource="#CC"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara sebuah class konjungsi dengan class CD</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasCC</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasCD">
+  <rdfs:domain rdf:resource="#FNom"/>
+  <rdfs:range rdf:resource="#CD"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara sebuah class FN dengan class CD</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasCD</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDT">
+  <rdfs:domain rdf:resource="#FNom"/>
+  <rdfs:range rdf:resource="#DT"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFW">
+  <rdfs:range rdf:resource="#FW"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFadje">
+  <rdfs:domain rdf:resource="#Pelengkap"/>
+  <rdfs:range rdf:resource="#FAdje"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFnom">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Pelengkap"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#FNom"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFnum">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Objek properti yang
+      digunakan untuk merelasikan antara instance dengan frase numerical (FNum)</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">hasFnum</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFprep">
+  <rdfs:domain rdf:resource="#Keterangan"/>
+  <rdfs:range rdf:resource="#FPrep"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasFverb">
+  <rdfs:domain rdf:resource="#Predikat"/>
+  <rdfs:range rdf:resource="#FVerb"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasIN">
+  <rdfs:domain rdf:resource="#FPrep"/>
+  <rdfs:range rdf:resource="#IN"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara sebuah class FPrep dengan class IN</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasIN</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasJJ">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FAdje"/>
+        <rdf:Description rdf:about="#Pelengkap"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#JJ"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasKlausa">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Objek properti yang
+      digunakan untuk merelasikan suatu instance dengan klausa</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">hasKlausa</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasMD">
+  <rdfs:domain rdf:resource="#FVerb"/>
+  <rdfs:range rdf:resource="#MD"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara sebuah class FV dengan class MD</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasMD</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNEG">
+  <rdfs:domain rdf:resource="#FVerb"/>
+  <rdfs:range rdf:resource="#NEG"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FV dengan class NEG</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasNEG</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNN">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#NN"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FN, Objek atau Subjek dengan class
+      NN</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasNN</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNND">
+  <rdfs:domain rdf:resource="#FNom"/>
+  <rdfs:range rdf:resource="#NND"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FN dengan class NND</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasNND</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNNP">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#NNP"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FN, Objek atau Subjek dengan class
+      NNP</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasNNP</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasNext">
+  <rdfs:range rdf:resource="#Kalimat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasOD">
+  <rdfs:range rdf:resource="#OD"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara sebuah class dengan class OD</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasOD</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPR">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#FVerb"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#PR"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FN, FV dengan class PR</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasPR</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPRP">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#PRP"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FN, Objek atau Subjek dengan class
+      PRP</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasPRP</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPart">
+  <owl:inverseOf rdf:resource="#partOf"/>
+  <rdfs:domain rdf:resource="#Kalimat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#partOf">
+  <rdfs:range rdf:resource="#Kalimat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPewatas">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Objek properti yang
+      digunakan untuk merelasikan antara suatu objek pewatas dengan objek pewatas yang lainnya</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">hasPewatas</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPrev">
+  <rdfs:range rdf:resource="#Kalimat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRB">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FAdj dengan class RB</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasRB</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRP">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class VB dengan class RP</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasRP</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasSYM">
+  <rdfs:domain rdf:resource="#FPrep"/>
+  <rdfs:range rdf:resource="#SYM"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FPrep dengan class SYM</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasSYM</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasUH">
+  <rdfs:domain rdf:resource="#FPrep"/>
+  <rdfs:range rdf:resource="#UH"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FPrep dengan class UH</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasUH</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasVB">
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FVerb"/>
+        <rdf:Description rdf:about="#Predikat"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
+  <rdfs:range rdf:resource="#VB"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class FV atau Predikat dengan class VB</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasVB</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasWH">
+  <rdfs:domain rdf:resource="#Subjek"/>
+  <rdfs:range rdf:resource="#WH"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class Subjek dengan class WH</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasWH</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasZnext">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Objek properti yang
+      digunakan untuk merelasikan antara SPOK dan Frasa di dalamnya</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">hasZnext</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasaSC">
+  <rdfs:range rdf:resource="#SC"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
+      menghubungkan antara class Konjungsi dengan class SC</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasaSC</rdfs:label>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasaSub">
+  <rdfs:domain rdf:resource="#Kalimat"/>
+  <rdfs:range rdf:resource="#Subjek"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasbPre">
+  <rdfs:domain rdf:resource="#Kalimat"/>
+  <rdfs:range rdf:resource="#Predikat"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hascObj">
+  <rdfs:domain rdf:resource="#Kalimat"/>
+  <rdfs:range rdf:resource="#Objek"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasdPel">
+  <rdfs:domain rdf:resource="#Kalimat"/>
+  <rdfs:range rdf:resource="#Pelengkap"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#haseKet">
+  <rdfs:domain rdf:resource="#Kalimat"/>
+  <rdfs:range rdf:resource="#Keterangan"/>
+</owl:ObjectProperty>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+
+<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+
+<owl:AnnotationProperty rdf:about="#preferredNamespacePrefix"/>
+
+<owl:AnnotationProperty rdf:about="#preferredNamespaceUri"/>
+
+<owl:Class rdf:about="#CC">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coordinating conjunction
+      (CC) menghubungkan dua atau lebih kata yang sejajar.
+      Coordinating conjunction dapat menghubungkan klausa, frasa, atau kata independen. Contohnya
+      dan, tetapi, atau.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CC</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FNom">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frasa Nominal (FN) adalah
+      frasa yang terdiri dari 2 atau lebih kata nomina.
+      COntohnya anak kecil, mobil merah, dua ekor sapi</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FNom</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CD">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardinal numbers (CD)
+      merupakan jawaban dari soal “Berapa?” sehingga CD
+      merepresentasikan angka. COntohnya dua, enam, 445.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CD</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DT">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Article / Determiner (DT)
+      adalah unit tata bahasa yang membatasi referensi
+      potensial dari frasa kata benda, yang peran dasarnya adalah menandai frasa kata benda
+      tersebut. Contohnya para, sang, si</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DT</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FW">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Foreign word (FW) / kata
+      asing adalah kata yang berasal dari bahasa asing dan pada
+      dasarnya belum termasuk dalam kamus bahasa Indonesia. Jika kata asing adalah bagian dari kata
+      benda atau nama, kata tersebut akan diberi label NNP. Contohnya climate change, terms and
+      conditions</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FW</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Pelengkap">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pelengkap mirip dengan
+      Objek namun tidak dapat menjadi subjek dalam pemasifan
+      kalimat</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pelengkap</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FAdje">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frasa Adjectival (FAdj)
+      adalaha frasa berupa adjective. Contohnya amat senang,
+      mahal betul, agak besar</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FAdje</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Objek">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek adalah fungsi
+      sintaktis yang kehadirannya ditentukan oleh predikat yang
+      berupa verba transitif pada kalimat aktif. Letaknya selalu langsung setelah predikat.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Subjek">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subjek merupakan fungsi
+      sintaktis terpenting kedua setelah predikat. Subjek berupa
+      nomina,frasa nominal, atau klausa</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subjek</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Keterangan">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Keterangan merupakan fungsi
+      sintaktis yang paling beragam dan paling mudah
+      berpindah letaknya. Konstituen keterangan biasanya berupa frasa preposisional, nomina atau
+      frasa nominal, numeralia atau frasa numeral, atau frasa adverbial</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Keterangan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FPrep">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frasa Preposisional (FPrep)
+      adalah frasa yang mengandung preposisi di dalamnya.
+      Contohnya dengan mudah, di atas meja makan.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FPrep</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Predikat">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Predikat merupakan unsur
+      pokok yang disertai subjek di sebelah kiri dan, jika ada,
+      unsur objek, pelengkap, dan/atau keterangan-wajib di sebelah kanan</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Predikat</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#FVerb">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frasa Verbal (VB) adalah
+      frasa yang mengandung penggunaan kata kerja. Contohnya
+      mengirim surat, tidur dengan nyenyak</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FVerb</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#IN">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IN</rdfs:comment>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sebuah preposisi
+      menghubungkan kata atau frasa dan konstituen di depan preposisi
+      tersebut dan menghasilkan frasa preposisional. Contohnya dalam, dengan, di, ke, oleh, pada,
+      untuk</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#JJ">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adjectives (JJ) adalah
+      kata-kata yang mendeskripsikan, memodifikasi, atau
+      menentukan beberapa properti dari kata benda dari frasa tersebut. Contohnya bersih, panjang,
+      hitam, lama, jauh, marah, suram, nasional, bulat</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JJ</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#MD">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Modal (MD) adalah
+      sekelompok kata bantu yang memberikan tambahan arti pada sebuah
+      kaliamat. Contohnya boleh, harus, sudah, mesti, perlu</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MD</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NEG">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEGATION (NEG) adalah
+      bentuk pernyataan negatif. Contohnya tidak, belum, jangan</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NEG</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NN">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Noun (NN) adalah kata yang
+      merujuk pada manusia, hewan, benda, konsep, atau
+      pemahaman. Contohnya monyet, bawah, sekarang, rupiah</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NN</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NND">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Measurement noun (NND)
+      terdiri dari Classifier, partitive, and measurement noun.
+      Classifiers mengklasifikasikan kata benda menjadi kata benda tertentu misalkan: orang.
+      Partitives menunjukkan jumlah tertentu dari sesuatu berdasarkan cara diukur, dirakit, atau
+      diproses: tetes . Measurement kata benda mengacu pada ukuran, jarak, volume, kecepatan, berat,
+      atau suhu: ton</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NND</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#NNP">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Proper noun (NN)P) adalah
+      nama spesifik dari seseorang, benda, atau tempat.
+      Contohnya Boediono, Laut Jawa, Indonesia, India, Malaysia, Bank Mandiri, BBKP, Januari, Senin,
+      Idul Fitri, Piala Dunia, Liga Primer, Lord of the Rings: The Return of the King</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NNP</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Kalimat">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">satatuan gramatikal
+      terbesar yang mengandung predikat dan mengungkapkan sebuah
+      pikiran</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kalimat</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OD">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ordinal number menunjukkan
+      posisi yang dipesan dalam satu seri. Contohnya ketiga
+      atau kedua</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OD</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PR">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kata ganti demonstratif
+      menyiratkan “menunjuk ke” atau“ mendemonstrasikan ”objek
+      yang dirujuknya: ini . Contohnya ini, itu, sini, situ</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PR</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#PRP">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Personal pronouns (PRP)
+      adalah kata ganti yang merujuk pada orang. Contohnya saya,
+      kami, kita, kamu, kalian, dia, mereka</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRP</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SYM">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Symbol meliputi symbol
+      matematika misalkan+, dan symbol mata uang misalkan IDR.
+      Contohnya Rp. IDR, +</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SYM</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#UH">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Interjection (UH) Kata seru
+      mengungkapkan perasaan atau keadaan pikiran dan tidak
+      ada hubungannya dengan kata lain secara sintaksis. Contohnya brengsek, oh, ooh, aduh, ayo,
+      mari, hai</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UH</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#VB">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Verb (VB) adalah bentuk
+      kata kerja. Contohnya merancang, mengatur, pergi, bekerja,
+      tertidur</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VB</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#WH">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Question Word (WH) adalah
+      kata yang digunakan untuk menanyakan suatu informasi
+      yang spesifik. Contohnya siapa, apa, mana, kenapa, kapan, di mana, bagaimana, berapa</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#SC">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subordinator (SC)
+      menghubungkan 2 atau lebih klausa namun terletak di dalam sebuah
+      klausa. Contohnya sejak, jika, seandainya, supaya, meski, seolah- olah, sebab, maka, tanpa,
+      dengan, bahwa, yang, lebih ...
+      daripada ..., semoga</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SC</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Tagset"/>
+
+<owl:Class rdf:about="#FNum">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frasa Numeralia (FNum)
+      adalah gabungan dua atau lebih kata yang mengandung kata
+      numerik. Contohnya lima puluhan , kedua puluh.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FNum</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Klausa">
+  <rdfs:subClassOf rdf:resource="#Kalimat"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">konstruksi sisintaktis yang
+      terdiri atas subjek dan predikat dengan atau tanpa
+      objek, pelengkap, atau keterangan.</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Klausa</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Pewatas">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gabungan beberapa kata yang
+      berfungsi sebagai penjelas sebuah subjek maupun objek</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pewatas</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RB">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adverb (RB) adalah kata
+      tambahan yang berfungsi memperjelas/penekanan makna.
+      Contohnya sangat, hanya, justru, niscaya, segera</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RB</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#RP">
+  <rdfs:subClassOf rdf:resource="#Tagset"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Particle (RP) adalah
+      imbuhan kata pun, -lah, -kah</rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RP</rdfs:label>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#s1">
+  <rdf:type rdf:resource="#Kalimat"/>
+  <hasaSub rdf:resource="#sub1"/>
+  <hasbPre rdf:resource="#pre1"/>
+  <hascObj rdf:resource="#obj1"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sub1">
+  <rdf:type rdf:resource="#Subjek"/>
+  <hasNN rdf:resource="#hipertensi"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#pre1">
+  <rdf:type rdf:resource="#Predikat"/>
+  <hasVB rdf:resource="#merupakan"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#obj1">
+  <rdf:type rdf:resource="#Objek"/>
+  <hasFadje rdf:resource="#nn"/>
+  <hasZnext rdf:resource="#fadje1"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#fadje1">
+  <rdf:type rdf:resource="#FAdje"/>
+  <hasFadje rdf:resource="#fadje1a"/>
+  <hasFadje rdf:resource="#fadje1b"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hipertensi">
+  <rdf:type rdf:resource="#NN"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#merupakan">
+  <rdf:type rdf:resource="#VB"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#penyakit">
+  <rdf:type rdf:resource="#NN"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#kronis">
+  <rdf:type rdf:resource="#JJ"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#fadje1a">
+  <rdf:type rdf:resource="#FAdje"/>
+  <hasNN rdf:resource="#penyakit"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#fadje1b">
+  <rdf:type rdf:resource="#FAdje"/>
+  <hasJJ rdf:resource="#kronis"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#nn">
+  <rdf:type rdf:resource="#FAdje"/>
+</owl:NamedIndividual>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Keterangan"/>
+    <rdf:Description rdf:about="#Objek"/>
+    <rdf:Description rdf:about="#Pelengkap"/>
+    <rdf:Description rdf:about="#Predikat"/>
+    <rdf:Description rdf:about="#Subjek"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>
