@@ -59,6 +59,15 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#FNom"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Pelengkap"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#hasFnum">
@@ -95,6 +104,26 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#JJ"/>
+  <rdfs:domain>
+    <owl:Class>
+      <rdf:first rdf:resource="#Objek"/>
+      <rdf:rest>
+        <rdf:Description>
+          <rdf:first rdf:resource="#Pelengkap"/>
+          <rdf:rest>
+            <rdf:Description>
+              <rdf:first rdf:resource="#Subjek"/>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </rdf:rest>
+        </rdf:Description>
+      </rdf:rest>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FAdje"/>
+        <rdf:Description rdf:about="#Pelengkap"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
 </owl:ObjectProperty>
 
 <owl:ObjectProperty rdf:about="#hasKlausa">
@@ -130,6 +159,15 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#NN"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
       menghubungkan antara class FN, Objek atau Subjek dengan class
       NN</rdfs:comment>
@@ -155,6 +193,15 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#NNP"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
       menghubungkan antara class FN, Objek atau Subjek dengan class
       NNP</rdfs:comment>
@@ -182,6 +229,14 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#PR"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#FVerb"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
       menghubungkan antara class FN, FV dengan class PR</rdfs:comment>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasPR</rdfs:label>
@@ -198,6 +253,15 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#PRP"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FNom"/>
+        <rdf:Description rdf:about="#Objek"/>
+        <rdf:Description rdf:about="#Subjek"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
       menghubungkan antara class FN, Objek atau Subjek dengan class
       PRP</rdfs:comment>
@@ -261,6 +325,14 @@
     </owl:Class>
   </rdfs:domain>
   <rdfs:range rdf:resource="#VB"/>
+  <rdfs:domain>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#FVerb"/>
+        <rdf:Description rdf:about="#Predikat"/>
+      </owl:unionOf>
+    </owl:Class>
+  </rdfs:domain>
   <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Objek properti yang
       menghubungkan antara class FV atau Predikat dengan class VB</rdfs:comment>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasVB</rdfs:label>
@@ -611,14 +683,7 @@
 
 <owl:NamedIndividual rdf:about="#obj1">
   <rdf:type rdf:resource="#Objek"/>
-  <hasFadje rdf:resource="#nn"/>
-  <hasZnext rdf:resource="#fadje1"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#fadje1">
-  <rdf:type rdf:resource="#FAdje"/>
-  <hasFadje rdf:resource="#fadje1a"/>
-  <hasFadje rdf:resource="#fadje1b"/>
+  <hasNN rdf:resource="#penyakit"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#hipertensi">
@@ -633,23 +698,11 @@
   <rdf:type rdf:resource="#NN"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#kronis">
-  <rdf:type rdf:resource="#JJ"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#fadje1a">
-  <rdf:type rdf:resource="#FAdje"/>
-  <hasNN rdf:resource="#penyakit"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#fadje1b">
-  <rdf:type rdf:resource="#FAdje"/>
-  <hasJJ rdf:resource="#kronis"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#nn">
-  <rdf:type rdf:resource="#FAdje"/>
-</owl:NamedIndividual>
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Subjek"/>
+  </owl:members>
+</owl:AllDisjointClasses>
 
 <owl:AllDisjointClasses>
   <owl:members rdf:parseType="Collection">

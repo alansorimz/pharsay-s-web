@@ -29,6 +29,8 @@ from lib.parent_recursion import parent_recursion
 from lib.create_fs2 import create_fs2
 from lib.generate_sentence import generate_sentence
 from lib.read_template import read_template
+from lib.read_sentence import parent_read_sentence
+from lib.create_q1 import create_q1
 
 
 app = Flask(__name__)
@@ -90,15 +92,32 @@ def test():
 
     FS2 = create_fs2(res_recursion) #FS2
 
-    file = read_triplet(FS2)
+    rtriplet = read_triplet(FS2)
+
+    file = np.array(rtriplet)
+
+    res_kalimat = parent_read_sentence(file)
+    
+    q1 = create_q1(res_kalimat)
 
     template = read_template("QGOT2.txt")
 
-    sentences = generate_sentence(file, template)
+    sentences = generate_sentence(q1, template)
 
     return jsonify({
+        # "result": parse_trees,
+        # "result": new_onto,
+        # "result": rtriplet,
+        # "result": FS2,
+        # "result": res_kalimat,
+        # "result": q1,
+        # "resulte": template,
         "result": sentences
     })
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+

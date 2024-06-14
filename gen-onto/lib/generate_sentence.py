@@ -5,14 +5,15 @@ def generate_sentence(file, template):
     template = np.array(template)
 
     result = []
-    for i in range(file.shape[0]): # jumlah triplet
-        for j in range(template.shape[0]): #jumlah template
+    for f in file:
+        f = f.split('&')
+        for j in range(template.shape[0]):
             temp = ""
-            for k in range (len(template[j])): #jumlah kata dalam kalimat template
+            for k in range (len(template[j])):
                 if(template[j][k] == '[class]'):
-                    temp += file[i,2] + ' '
+                    temp += f[0] + ' '
                 elif (template[j][k] == '[instance]'):
-                    temp += file[i,0] + ' '
+                    temp += f[1] + ' '
                 else:
                     temp += template[j][k] + ' '
             result.append(temp)
