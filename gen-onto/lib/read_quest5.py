@@ -18,7 +18,7 @@ def read_quest5(file):
                     print(file[i,2],end=' ')
                     res_a.append(file[i,2])
             
-            if file[i,2] in ["dari", "ke", "di", "adalah", "merupakan"]:
+            if file[i,2] in ["dari", "ke", "di"]:
                 break
                 
         result = np.array(result)

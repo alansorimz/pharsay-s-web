@@ -74,6 +74,7 @@ import numpy as np
     
 #     return temp_res_soal
 
+
 def read_quest8(file):
     # 8. VALIDASI
     temp_res_soal = []
@@ -100,7 +101,11 @@ def read_quest8(file):
         pertanyaan8a(x, file, res_a)
         
         if res_a:
-            tempa = "Apakah " + ' '.join(res_a).strip() + "?"
+            # Gabungkan hasil dan hapus "adalah" jika ada "merupakan"
+            res_a_str = ' '.join(res_a).strip()
+            if "merupakan" in res_a_str and "adalah" in res_a_str:
+                res_a_str = res_a_str.replace("adalah", "").strip()
+            tempa = "Apakah " + res_a_str + "?"
             temp_res_soal.append(tempa)
     
     for i, f in enumerate(file):

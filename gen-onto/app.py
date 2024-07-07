@@ -12,6 +12,7 @@ nltk.download('punkt')
 
 from lib.clear_pharmacho import delete_individual
 from lib.parse_tree import parse_tree
+from lib.parse_tree import concatenate_sentences
 from lib.preprocess import preprocess
 from lib.mapping_component import mapping_component
 from lib.preprocess_csv import preprocess_csv
@@ -78,7 +79,10 @@ def test():
     try:
         delete_individual()
         sentences = request.json['sentences']
-        parse_trees = parse_tree(sentences)
+        concatenateSentences = concatenate_sentences(sentences)
+        print(f"Iki babi {concatenateSentences}")
+        parse_trees = parse_tree(concatenateSentences)
+        print(f'iki ptree {parse_trees}')
         preprocess_sentences = preprocess(parse_trees)
         tree_dict, counter_tree = mapping_component()
 
@@ -109,6 +113,7 @@ def test():
         rtriplet = read_triplet(FS2)
 
         file = np.array(rtriplet)
+        print(f'iki opo {file}')
 
         get_quest = read_quest_all(file)
 

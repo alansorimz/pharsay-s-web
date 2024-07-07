@@ -25,53 +25,32 @@ def read_quest10(file):
     
         for i in result:
             pertanyaan10a(i, file)
-
-    # res_b = []
-    # def pertanyaan10b(x, file):
-    #     result = []
-    #     for i in range(file.shape[0]):
-    #         if(file[i,0] == x and 'sub' not in file[i,0]): 
-    #             result.append(file[i,2])
-    #             if(file[i,1] != 'hasbPre' and file[i,1] != 'hascObj' and 
-    #                 file[i,1] != 'hasdPel' and file[i,1] != 'haseKet' and 
-    #                 file[i,1] != 'hasFnom' and file[i,1] != 'hasFadje' and
-    #                 file[i,1] != 'hasFverb' and file[i,1] != 'hasFnum' and
-    #                 file[i,1] != 'hasPewatas' and file[i,1] != 'hasKlausa' and
-    #                 file[i,1] != 'hasFprep' and file[i,1] != 'hasZnext' and
-    #                 file[i,1] != 'hasaSub'):
-    #                 print(file[i,2],end=' ')
-    #                 res_b.append(file[i,2])
-                
-    #     result = np.array(result)
-        
-    #     for i in result:
-    #         pertanyaan10b(i, file)
         
     temp_res_soal = []
 
     def soal10 (x, file):
         pertanyaan10a(x,file)
-             
-        # pertanyaan10b(x,file)
 
     for i, f in enumerate(file):
         stc = f"s{i + 1}" 
         soal10(stc, file)
 
-        tempa = ''
-        # tempb = ''
+        # tempa = ''
 
-        if len(res_a) != 0:
-            tempa = ' '.join(res_a).strip() + '....' + ' '
+        # if len(res_a) != 0:
+        #     tempa = ' '.join(res_a).strip() + '....' + ' '
+        #     temp_res_soal.append(tempa)
+        
+        # if len(res_a) == 0:
+        #     continue
+        if res_a:
+            tempa = ' '.join(res_a).strip()
+            # Hapus 'adalah' jika ada 'merupakan'
+            if 'merupakan' in tempa and 'adalah' in tempa:
+                tempa = tempa.replace('adalah', '').strip()
+            tempa = tempa + '.....'
             temp_res_soal.append(tempa)
-        # if len(res_b) != 0:
-        #     tempb = "....."+ ' '.join(res_b).strip() + ' '
-        #     temp_res_soal.append(tempb)
-
-        if len(res_a) == 0:
-            continue
         
         res_a = []
-        # res_b = []
-    
+
     return temp_res_soal

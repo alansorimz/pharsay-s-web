@@ -35,14 +35,21 @@ def read_quest11(file):
         stc = f"s{i + 1}" 
         soal11(stc, file)
 
-        tempa = ''
+        # tempa = ''
 
-        if len(res_a) != 0:
-            tempa = '....' + ' '.join(res_a).strip() + ' '
-            temp_res_soal.append(tempa)
+        # if len(res_a) != 0:
+        #     tempa = '....' + ' '.join(res_a).strip() + ' '
+        #     temp_res_soal.append(tempa)
     
-        if len(res_a) == 0:
-            continue
+        # if len(res_a) == 0:
+        #     continue
+        if res_a:
+            tempa = ' '.join(res_a).strip()
+            # Hapus 'adalah' jika ada 'merupakan'
+            if 'merupakan' in tempa and 'adalah' in tempa:
+                tempa = tempa.replace('adalah', '').strip()
+            tempa = '.....' +tempa 
+            temp_res_soal.append(tempa)
         
         res_a = []
     

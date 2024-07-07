@@ -1,5 +1,6 @@
 from owlready2 import *
 import numpy as np
+import re
 
 def parent_recursion(onto):
     res_recursion = []
@@ -27,10 +28,17 @@ def parent_recursion(onto):
             if(str(i[1]).split('.')[1]!='hasNext'):
                 recursion('okbi:'+str(i[2]).split('.')[1])
 
+    # for individual in onto.individuals():
+    #     individual_name = individual.name
+    #     if individual_name.startswith("s"):
+    #         recursion(f"okbi:{individual_name}")
+    
     for individual in onto.individuals():
         individual_name = individual.name
-        if individual_name.startswith("s"):
+        if re.match(r'^s\d+$', individual_name):  # Memeriksa apakah nama individual dimulai dengan "s" diikuti oleh satu atau lebih digit
+            # print(f"okbi:{individual_name}")
             recursion(f"okbi:{individual_name}")
+            # print("-")
 
     res = ""
     for i, x in enumerate(res_recursion):
