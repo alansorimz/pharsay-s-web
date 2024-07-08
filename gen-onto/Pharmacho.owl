@@ -872,28 +872,42 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RP</rdfs:label>
 </owl:Class>
 
-<owl:NamedIndividual rdf:about="#s1">
+<owl:NamedIndividual rdf:about="#s2">
   <rdf:type rdf:resource="#Kalimat"/>
-  <hasaSub rdf:resource="#sub1"/>
-  <hasbPre rdf:resource="#pre1"/>
-  <hascObj rdf:resource="#obj1"/>
-  <hasbPre rdf:resource="#pre2"/>
-  <hascObj rdf:resource="#obj2"/>
+  <hasaSub rdf:resource="#sub2"/>
+  <hasbPre rdf:resource="#pre3"/>
+  <haseKet rdf:resource="#ket2"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#sub1">
+<owl:NamedIndividual rdf:about="#sub2">
   <rdf:type rdf:resource="#Subjek"/>
-  <hasNN rdf:resource="#hipertensi"/>
+  <hasNN rdf:resource="#ayah"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#pre1">
+<owl:NamedIndividual rdf:about="#pre3">
   <rdf:type rdf:resource="#Predikat"/>
-  <hasVB rdf:resource="#merupakan"/>
+  <hasVB rdf:resource="#pergi"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#obj1">
-  <rdf:type rdf:resource="#Objek"/>
-  <hasFadje rdf:resource="#nn"/>
+<owl:NamedIndividual rdf:about="#ket2">
+  <rdf:type rdf:resource="#Keterangan"/>
+  <hasZnext rdf:resource="#fprep2"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#fprep2">
+  <rdf:type rdf:resource="#FPrep"/>
+  <hasZnext rdf:resource="#fprep3"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#fprep3">
+  <rdf:type rdf:resource="#FPrep"/>
+  <hasZnext rdf:resource="#fprep4"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#fprep4">
+  <rdf:type rdf:resource="#FPrep"/>
+  <hasFprep rdf:resource="#fprep4a"/>
+  <hasFprep rdf:resource="#fprep4b"/>
   <hasZnext rdf:resource="#fadje1"/>
 </owl:NamedIndividual>
 
@@ -901,21 +915,6 @@
   <rdf:type rdf:resource="#FAdje"/>
   <hasFadje rdf:resource="#fadje1a"/>
   <hasFadje rdf:resource="#fadje1b"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#pre2">
-  <rdf:type rdf:resource="#Predikat"/>
-  <hasZnext rdf:resource="#fverb1"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#fverb1">
-  <rdf:type rdf:resource="#FVerb"/>
-  <hasFverb rdf:resource="#fverb1a"/>
-  <hasFverb rdf:resource="#fverb1b"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#obj2">
-  <rdf:type rdf:resource="#Objek"/>
   <hasZnext rdf:resource="#fnom1"/>
 </owl:NamedIndividual>
 
@@ -925,67 +924,77 @@
   <hasFnom rdf:resource="#fnom1b"/>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#ayah">
+  <rdf:type rdf:resource="#NN"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#pergi">
+  <rdf:type rdf:resource="#VB"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ke">
+  <rdf:type rdf:resource="#IN"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#rumah">
+  <rdf:type rdf:resource="#NN"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sakit">
+  <rdf:type rdf:resource="#JJ"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#membeli">
+  <rdf:type rdf:resource="#VB"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#obat">
+  <rdf:type rdf:resource="#NN"/>
+</owl:NamedIndividual>
+
 <owl:NamedIndividual rdf:about="#hipertensi">
   <rdf:type rdf:resource="#NN"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#merupakan">
-  <rdf:type rdf:resource="#VB"/>
+<owl:NamedIndividual rdf:about="#fprep4a">
+  <rdf:type rdf:resource="#FPrep"/>
+  <hasIN rdf:resource="#ke"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#penyakit">
-  <rdf:type rdf:resource="#NN"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#kronis">
-  <rdf:type rdf:resource="#JJ"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#dapat">
-  <rdf:type rdf:resource="#MD"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#meningkatkan">
-  <rdf:type rdf:resource="#VB"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#stroke">
-  <rdf:type rdf:resource="#NN"/>
+<owl:NamedIndividual rdf:about="#fprep4b">
+  <rdf:type rdf:resource="#FPrep"/>
+  <hasNN rdf:resource="#rumah"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#fadje1a">
   <rdf:type rdf:resource="#FAdje"/>
-  <hasNN rdf:resource="#penyakit"/>
+  <hasJJ rdf:resource="#sakit"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#fadje1b">
   <rdf:type rdf:resource="#FAdje"/>
-  <hasJJ rdf:resource="#kronis"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#fverb1a">
-  <rdf:type rdf:resource="#FVerb"/>
-  <hasMD rdf:resource="#dapat"/>
-</owl:NamedIndividual>
-
-<owl:NamedIndividual rdf:about="#fverb1b">
-  <rdf:type rdf:resource="#FVerb"/>
-  <hasVB rdf:resource="#meningkatkan"/>
+  <hasVB rdf:resource="#membeli"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#fnom1a">
   <rdf:type rdf:resource="#FNom"/>
-  <hasNN rdf:resource="#penyakit"/>
+  <hasNN rdf:resource="#obat"/>
 </owl:NamedIndividual>
 
 <owl:NamedIndividual rdf:about="#fnom1b">
   <rdf:type rdf:resource="#FNom"/>
-  <hasNN rdf:resource="#stroke"/>
+  <hasNN rdf:resource="#hipertensi"/>
 </owl:NamedIndividual>
 
-<owl:NamedIndividual rdf:about="#nn">
-  <rdf:type rdf:resource="#FAdje"/>
-</owl:NamedIndividual>
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Keterangan"/>
+    <rdf:Description rdf:about="#Objek"/>
+    <rdf:Description rdf:about="#Pelengkap"/>
+    <rdf:Description rdf:about="#Predikat"/>
+    <rdf:Description rdf:about="#Subjek"/>
+  </owl:members>
+</owl:AllDisjointClasses>
 
 <owl:AllDisjointClasses>
   <owl:members rdf:parseType="Collection">
@@ -1004,16 +1013,6 @@
 
 <owl:AllDisjointClasses>
   <owl:members rdf:parseType="Collection">
-    <rdf:Description rdf:about="#Subjek"/>
-  </owl:members>
-</owl:AllDisjointClasses>
-
-<owl:AllDisjointClasses>
-  <owl:members rdf:parseType="Collection">
-    <rdf:Description rdf:about="#Keterangan"/>
-    <rdf:Description rdf:about="#Objek"/>
-    <rdf:Description rdf:about="#Pelengkap"/>
-    <rdf:Description rdf:about="#Predikat"/>
     <rdf:Description rdf:about="#Subjek"/>
   </owl:members>
 </owl:AllDisjointClasses>

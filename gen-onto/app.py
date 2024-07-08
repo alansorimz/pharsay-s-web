@@ -4,6 +4,9 @@ from numpy import asarray
 from numpy import savetxt
 from owlready2 import *
 
+# to build in hosting
+from flask import Flask, send_from_directory
+
 from flask import Flask, request, jsonify, render_template, make_response
 from flask_cors import CORS
 import nltk
@@ -47,7 +50,10 @@ from lib.read_quest10 import read_quest10
 from lib.read_quest11 import read_quest11
 from lib.read_quest_all import read_quest_all
 
-app = Flask(__name__)
+# to build in hosting
+app = Flask(__name__, static_folder='static', static_url_path='')
+
+# app = Flask(__name__)
 app.config.from_object(__name__)
 
 # enable CORS
@@ -74,6 +80,16 @@ def get_parse_tree():
 def home():
     return jsonify({'message': 'PA ALAN'})
 
+# to build in hosting
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+
+# to build in hosting
+@app.errorhandler(404)
+def not_found(e):
+    return send_from_directory(app.static_folder, 'index.html')
+
 @app.route('/test', methods=['GET','POST'])
 def test():
     try:
@@ -82,7 +98,7 @@ def test():
         concatenateSentences = concatenate_sentences(sentences)
         print(f"Iki babi {concatenateSentences}")
         parse_trees = parse_tree(concatenateSentences)
-        print(f'iki ptree {parse_trees}')
+        # print(f'iki ptree {parse_trees}')
         preprocess_sentences = preprocess(parse_trees)
         tree_dict, counter_tree = mapping_component()
 
